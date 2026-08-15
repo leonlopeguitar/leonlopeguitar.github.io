@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicolás León — Score That Speaks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #1C1C1C;
+      --charcoal-mid: #252525;
+      --cream: #F5F0E8;
+      --amber: #C4956A;
+      --cream-muted: rgba(245, 240, 232, 0.6);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--charcoal);
+      color: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 4rem;
+      background: rgba(28, 28, 28, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(245, 240, 232, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--charcoal);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--cream-muted);
+      margin-bottom: 3rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border: 0.5px solid rgba(245, 240, 232, 0.4);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      align-self: flex-start;
+    }
+
+    .hero-cta:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%);
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--charcoal) 0%, transparent 30%);
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--charcoal-mid);
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      padding-top: 0.4rem;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--cream-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-text .highlight {
+      color: var(--amber);
+      font-style: normal;
+    }
+
+    /* CREDITS */
+    #credits {
+      background: var(--cream);
+      color: var(--charcoal);
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    #credits .section-label {
+      color: var(--amber);
+    }
+
+    .credits-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 2.5rem;
+      color: var(--charcoal);
+      margin-bottom: 3rem;
+      letter-spacing: 0.02em;
+    }
+
+    .credit-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 2rem 0;
+      border-top: 0.5px solid rgba(28, 28, 28, 0.15);
+    }
+
+    .credit-item:last-child {
+      border-bottom: 0.5px solid rgba(28, 28, 28, 0.15);
+    }
+
+    .credit-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.2rem;
+      color: var(--charcoal);
+      letter-spacing: 0.04em;
+    }
+
+    .credit-festival {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-top: 0.35rem;
+    }
+
+    .credit-role {
+      font-size: 0.85rem;
+      color: rgba(28, 28, 28, 0.6);
+      line-height: 1.7;
+    }
+
+    .credit-awards {
+      font-size: 0.8rem;
+      color: rgba(28, 28, 28, 0.5);
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* SCORES */
+    #scores {
+      background: var(--charcoal);
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .scores-content p {
+      font-size: 1rem;
+      color: var(--cream-muted);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .scores-link {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 0.5px solid var(--amber);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .scores-link:hover {
+      background: var(--amber);
+      color: var(--charcoal);
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--charcoal);
+      border-top: 0.5px solid rgba(245, 240, 232, 0.08);
+      padding: 7rem 4rem;
+      text-align: center;
+    }
+
+    .contact-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--cream);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-sub {
+      font-size: 0.9rem;
+      color: var(--cream-muted);
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border: 0.5px solid rgba(245, 240, 232, 0.4);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .contact-email:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      border-top: 0.5px solid rgba(245, 240, 232, 0.08);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--cream-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--amber); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1.25rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 7rem 1.5rem 3rem; }
+      .hero-right { height: 60vw; }
+      #about, #credits, #scores { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
+      #contact { padding: 4rem 1.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Nicolás León</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#credits">Credits</a></li>
+      <li><a href="#scores">Scores</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Screen Composer · Bogotá</p>
+      <h1 class="hero-name">Nicolás<br>León</h1>
+      <p class="hero-tagline">Score that speaks.</p>
+      <a href="#contact" class="hero-cta">Let's work together</a>
+    </div>
+    <div class="hero-right">
+      <img src="IMG_6918.jpg" alt="Nicolás León" />
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="about-text">
+      <p>I'm Nicolás León, a screen composer based in Bogotá specializing in atmospheric and narrative-driven scores. My work spans animated short films, video games, trailers, and live exhibitions — always built around the idea that music should be felt before it's heard.</p>
+      <p>My compositions have been part of projects recognized at <span class="highlight">FICCI</span>, <span class="highlight">Santiago Horror Festival</span>, <span class="highlight">Bakunawa Fest</span>, <span class="highlight">Bogoshorts</span>, and the <span class="highlight">Cinemateca de Bogotá</span>.</p>
+    </div>
+  </section>
+
+  <!-- CREDITS -->
+  <section id="credits">
+    <p class="section-label">Credits</p>
+    <div>
+      <h2 class="credits-heading">Selected work</h2>
+
+      <div class="credit-item">
+        <div>
+          <p class="credit-title">The Devil's Room</p>
+          <p class="credit-festival">Santiago Horror Festival · Bogoshorts</p>
+        </div>
+        <div>
+          <p class="credit-role">Trailer music composer</p>
+          <p class="credit-awards">Best Animated Short — Santiago Horror Festival<br>Best Horror Film — Bakunawa Fest<br>Best Sound Design — Bogoshorts</p>
+        </div>
+      </div>
+
+      <div class="credit-item">
+        <div>
+          <p class="credit-title">LETE</p>
+          <p class="credit-festival">FICCI · BR Banshee · Scumdance</p>
+        </div>
+        <div>
+          <p class="credit-role">Soundtrack composer · Co-producer</p>
+          <p class="credit-awards">Best Animated Film — BR Banshee Festival<br>Best Horror Short — Scumdance<br>WIP Puerto Lab Prize — FICCI</p>
+        </div>
+      </div>
+
+      <div class="credit-item">
+        <div>
+          <p class="credit-title">Zomboski</p>
+          <p class="credit-festival">Video Game</p>
+        </div>
+        <div>
+          <p class="credit-role">Sound Design · Co-composer</p>
+        </div>
+      </div>
+
+      <div class="credit-item">
+        <div>
+          <p class="credit-title">Propiedades Curativas del Retrato</p>
+          <p class="credit-festival">Cinemateca de Bogotá</p>
+        </div>
+        <div>
+          <p class="credit-role">Music composer</p>
+          <p class="credit-awards">Photography exhibition produced by Trópico Atómico and Danta Cine</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SCORES -->
+  <section id="scores">
+    <p class="section-label">Scores</p>
+    <div class="scores-content">
+      <p>A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story.</p>
+      <a href="https://soundcloud.com/nicoleonlo" target="_blank" rel="noopener" class="scores-link">Listen on SoundCloud ↗</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="contact-heading">Let's work together</h2>
+    <p class="contact-sub">Open to commissions for film, games, trailers, and live experiences.</p>
+    <a href="mailto:nico.leonlope@gmail.com" class="contact-email">nico.leonlope@gmail.com</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-copy">© 2026 Nicolás León</p>
+    <ul class="footer-links">
+      <li><a href="https://www.instagram.com/nicoleonlo/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.youtube.com/@nicoleonlo/featured" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="https://soundcloud.com/nicoleonlo" target="_blank" rel="noopener">SoundCloud</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
