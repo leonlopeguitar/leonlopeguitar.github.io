@@ -29,15 +29,13 @@
     /* NAV */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1.5rem 4rem;
-      background: rgba(28, 28, 28, 0.85);
+      background: rgba(28, 28, 28, 0.9);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid rgba(245, 240, 232, 0.08);
     }
@@ -49,6 +47,12 @@
       letter-spacing: 0.08em;
       color: var(--cream);
       text-decoration: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
     }
 
     .nav-links {
@@ -67,6 +71,24 @@
     }
 
     .nav-links a:hover { color: var(--cream); }
+
+    .lang-toggle {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+      background: none;
+      border: 0.5px solid rgba(245, 240, 232, 0.2);
+      padding: 0.35rem 0.75rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .lang-toggle:hover {
+      color: var(--amber);
+      border-color: var(--amber);
+    }
 
     /* HERO */
     #hero {
@@ -124,22 +146,19 @@
       align-self: flex-start;
     }
 
-    .hero-cta:hover {
-      border-color: var(--amber);
-      color: var(--amber);
-    }
+    .hero-cta:hover { border-color: var(--amber); color: var(--amber); }
 
     .hero-right {
       position: relative;
       overflow: hidden;
+      min-height: 400px;
     }
 
     .hero-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
-      filter: grayscale(20%);
+      object-position: center 20%;
     }
 
     .hero-right::after {
@@ -176,10 +195,7 @@
 
     .about-text p:last-child { margin-bottom: 0; }
 
-    .about-text .highlight {
-      color: var(--amber);
-      font-style: normal;
-    }
+    .highlight { color: var(--amber); }
 
     /* CREDITS */
     #credits {
@@ -192,9 +208,7 @@
       align-items: start;
     }
 
-    #credits .section-label {
-      color: var(--amber);
-    }
+    #credits .section-label { color: var(--amber); }
 
     .credits-heading {
       font-family: 'Cormorant Garamond', serif;
@@ -213,9 +227,7 @@
       border-top: 0.5px solid rgba(28, 28, 28, 0.15);
     }
 
-    .credit-item:last-child {
-      border-bottom: 0.5px solid rgba(28, 28, 28, 0.15);
-    }
+    .credit-item:last-child { border-bottom: 0.5px solid rgba(28, 28, 28, 0.15); }
 
     .credit-title {
       font-family: 'Cormorant Garamond', serif;
@@ -224,6 +236,20 @@
       color: var(--charcoal);
       letter-spacing: 0.04em;
     }
+
+    .credit-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      text-decoration: none;
+      border-bottom: 0.5px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .credit-link:hover { border-bottom-color: var(--amber); }
 
     .credit-festival {
       font-size: 0.7rem;
@@ -275,10 +301,7 @@
       transition: background 0.2s, color 0.2s;
     }
 
-    .scores-link:hover {
-      background: var(--amber);
-      color: var(--charcoal);
-    }
+    .scores-link:hover { background: var(--amber); color: var(--charcoal); }
 
     /* CONTACT */
     #contact {
@@ -316,10 +339,7 @@
       transition: border-color 0.2s, color 0.2s;
     }
 
-    .contact-email:hover {
-      border-color: var(--amber);
-      color: var(--amber);
-    }
+    .contact-email:hover { border-color: var(--amber); color: var(--amber); }
 
     /* FOOTER */
     footer {
@@ -354,14 +374,38 @@
 
     .footer-links a:hover { color: var(--amber); }
 
-    /* RESPONSIVE */
+    /* MOBILE */
     @media (max-width: 768px) {
       nav { padding: 1.25rem 1.5rem; }
       .nav-links { display: none; }
-      #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 7rem 1.5rem 3rem; }
-      .hero-right { height: 60vw; }
-      #about, #credits, #scores { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
+
+      #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        min-height: auto;
+      }
+
+      .hero-right {
+        order: -1;
+        height: 70vw;
+        min-height: 280px;
+      }
+
+      .hero-right::after {
+        background: linear-gradient(to top, var(--charcoal) 0%, transparent 40%);
+      }
+
+      .hero-right img {
+        object-position: center 15%;
+      }
+
+      .hero-left {
+        padding: 2.5rem 1.5rem 4rem;
+      }
+
+      #about, #scores { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 1.5rem; }
+      #credits { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 1.5rem; }
+      .credit-item { grid-template-columns: 1fr; }
       #contact { padding: 4rem 1.5rem; }
       footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; text-align: center; }
     }
@@ -369,24 +413,26 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">Nicolás León</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#credits">Credits</a></li>
-      <li><a href="#scores">Scores</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
+        <li><a href="#credits" data-en="Credits" data-es="Créditos">Credits</a></li>
+        <li><a href="#scores" data-en="Scores" data-es="Música">Scores</a></li>
+        <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+      </ul>
+      <button class="lang-toggle" onclick="toggleLang()">ES</button>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow">Screen Composer · Bogotá</p>
+      <p class="hero-eyebrow" data-en="Screen Composer · Bogotá" data-es="Compositor de música para medios · Bogotá">Screen Composer · Bogotá</p>
       <h1 class="hero-name">Nicolás<br>León</h1>
-      <p class="hero-tagline">Score that speaks.</p>
-      <a href="#contact" class="hero-cta">Let's work together</a>
+      <p class="hero-tagline" data-en="Score that speaks." data-es="Música que habla.">Score that speaks.</p>
+      <a href="#contact" class="hero-cta" data-en="Let's work together" data-es="Trabajemos juntos">Let's work together</a>
     </div>
     <div class="hero-right">
       <img src="IMG_6918.jpg" alt="Nicolás León" />
@@ -395,27 +441,45 @@
 
   <!-- ABOUT -->
   <section id="about">
-    <p class="section-label">About</p>
+    <p class="section-label" data-en="About" data-es="Sobre mí">About</p>
     <div class="about-text">
-      <p>I'm Nicolás León, a screen composer based in Bogotá specializing in atmospheric and narrative-driven scores. My work spans animated short films, video games, trailers, and live exhibitions — always built around the idea that music should be felt before it's heard.</p>
-      <p>My compositions have been part of projects recognized at <span class="highlight">FICCI</span>, <span class="highlight">Santiago Horror Festival</span>, <span class="highlight">Bakunawa Fest</span>, <span class="highlight">Bogoshorts</span>, and the <span class="highlight">Cinemateca de Bogotá</span>.</p>
+      <p data-en="I'm Nicolás León, a media composer based in Bogotá specializing in atmospheric and narrative-driven scores. My work spans animated short films, video games, trailers, and live exhibitions — always built around the idea that music should be felt before it's heard."
+         data-es="Soy Nicolás León, compositor de música para medios radicado en Bogotá, especializado en scores atmosféricos y narrativos. Mi trabajo abarca cortometrajes animados, videojuegos, trailers y exposiciones en vivo — siempre con la idea de que la música debe sentirse antes de escucharse.">
+        I'm Nicolás León, a media composer based in Bogotá specializing in atmospheric and narrative-driven scores. My work spans animated short films, video games, trailers, and live exhibitions — always built around the idea that music should be felt before it's heard.
+      </p>
+      <p>
+        <span data-en="My compositions have been part of projects recognized at " data-es="Mis composiciones han formado parte de proyectos reconocidos en ">My compositions have been part of projects recognized at </span><span class="highlight">FICCI</span>, <span class="highlight">Santiago Horror Festival</span>, <span class="highlight">Bakunawa Fest</span>, <span class="highlight">Bogoshorts</span><span data-en=", and the " data-es=" y la ">, and the </span><span class="highlight">Cinemateca de Bogotá</span>.
+      </p>
     </div>
   </section>
 
   <!-- CREDITS -->
   <section id="credits">
-    <p class="section-label">Credits</p>
+    <p class="section-label" data-en="Credits" data-es="Créditos">Credits</p>
     <div>
-      <h2 class="credits-heading">Selected work</h2>
+      <h2 class="credits-heading" data-en="Selected work" data-es="Trabajos seleccionados">Selected work</h2>
 
       <div class="credit-item">
         <div>
-          <p class="credit-title">The Devil's Room</p>
-          <p class="credit-festival">Santiago Horror Festival · Bogoshorts</p>
+          <p class="credit-title">Propiedades Curativas del Retrato</p>
+          <p class="credit-festival">Cinemateca de Bogotá</p>
+          <a href="https://on.soundcloud.com/k42QO6vsVRFnGmL1Dh" target="_blank" rel="noopener" class="credit-link" data-en="Listen ↗" data-es="Escuchar ↗">Listen ↗</a>
         </div>
         <div>
-          <p class="credit-role">Trailer music composer</p>
-          <p class="credit-awards">Best Animated Short — Santiago Horror Festival<br>Best Horror Film — Bakunawa Fest<br>Best Sound Design — Bogoshorts</p>
+          <p class="credit-role" data-en="Music composer" data-es="Compositor">Music composer</p>
+          <p class="credit-awards" data-en="Photography exhibition · Trópico Atómico & Danta Cine" data-es="Exposición fotográfica · Trópico Atómico & Danta Cine">Photography exhibition · Trópico Atómico & Danta Cine</p>
+        </div>
+      </div>
+
+      <div class="credit-item">
+        <div>
+          <p class="credit-title" data-en="The Devil's Room" data-es="La Habitación del Macho Cabrío">The Devil's Room</p>
+          <p class="credit-festival">Santiago Horror Festival · Bogoshorts</p>
+          <a href="https://youtu.be/dIbMn_N_aVU?si=cAy7L5aJ8FESC8Dx" target="_blank" rel="noopener" class="credit-link" data-en="Watch trailer ↗" data-es="Ver trailer ↗">Watch trailer ↗</a>
+        </div>
+        <div>
+          <p class="credit-role" data-en="Trailer music composer" data-es="Compositor de música para medios">Trailer music composer</p>
+          <p class="credit-awards" data-en="Best Animated Short — Santiago Horror Festival&#10;Best Horror Film — Bakunawa Fest&#10;Best Sound Design — Bogoshorts" data-es="Mejor cortometraje animado — Santiago Horror Festival&#10;Mejor película de horror — Bakunawa Fest&#10;Mejor diseño de sonido — Bogoshorts">Best Animated Short — Santiago Horror Festival<br>Best Horror Film — Bakunawa Fest<br>Best Sound Design — Bogoshorts</p>
         </div>
       </div>
 
@@ -423,31 +487,22 @@
         <div>
           <p class="credit-title">LETE</p>
           <p class="credit-festival">FICCI · BR Banshee · Scumdance</p>
+          <a href="https://on.soundcloud.com/riNZ7KRd78nnfnnUlk" target="_blank" rel="noopener" class="credit-link" data-en="Listen ↗" data-es="Escuchar ↗">Listen ↗</a>
         </div>
         <div>
-          <p class="credit-role">Soundtrack composer · Co-producer</p>
-          <p class="credit-awards">Best Animated Film — BR Banshee Festival<br>Best Horror Short — Scumdance<br>WIP Puerto Lab Prize — FICCI</p>
+          <p class="credit-role" data-en="Soundtrack composer · Co-producer" data-es="Compositor de soundtrack · Co-productor">Soundtrack composer · Co-producer</p>
+          <p class="credit-awards" data-en="Best Animated Film — BR Banshee Festival&#10;Best Horror Short — Scumdance&#10;WIP Puerto Lab Prize — FICCI" data-es="Mejor filme animado — BR Banshee Festival&#10;Mejor cortometraje de horror — Scumdance&#10;Premio WIP Puerto Lab — FICCI">Best Animated Film — BR Banshee Festival<br>Best Horror Short — Scumdance<br>WIP Puerto Lab Prize — FICCI</p>
         </div>
       </div>
 
       <div class="credit-item">
         <div>
           <p class="credit-title">Zomboski</p>
-          <p class="credit-festival">Video Game</p>
+          <p class="credit-festival" data-en="Video Game" data-es="Videojuego">Video Game</p>
+          <a href="https://on.soundcloud.com/lxkVxEXtLltQcBDsoG" target="_blank" rel="noopener" class="credit-link" data-en="Listen ↗" data-es="Escuchar ↗">Listen ↗</a>
         </div>
         <div>
-          <p class="credit-role">Sound Design · Co-composer</p>
-        </div>
-      </div>
-
-      <div class="credit-item">
-        <div>
-          <p class="credit-title">Propiedades Curativas del Retrato</p>
-          <p class="credit-festival">Cinemateca de Bogotá</p>
-        </div>
-        <div>
-          <p class="credit-role">Music composer</p>
-          <p class="credit-awards">Photography exhibition produced by Trópico Atómico and Danta Cine</p>
+          <p class="credit-role" data-en="Sound Design · Co-composer" data-es="Diseño de sonido · Co-compositor">Sound Design · Co-composer</p>
         </div>
       </div>
 
@@ -456,17 +511,20 @@
 
   <!-- SCORES -->
   <section id="scores">
-    <p class="section-label">Scores</p>
+    <p class="section-label" data-en="Scores" data-es="Música">Scores</p>
     <div class="scores-content">
-      <p>A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story.</p>
-      <a href="https://soundcloud.com/nicoleonlo" target="_blank" rel="noopener" class="scores-link">Listen on SoundCloud ↗</a>
+      <p data-en="A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story."
+         data-es="Una selección de scores originales para cine, videojuegos y medios en vivo. Atmosféricos, narrativos y construidos para servir a la historia.">
+        A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story.
+      </p>
+      <a href="https://soundcloud.com/nicoleonlo" target="_blank" rel="noopener" class="scores-link" data-en="Listen on SoundCloud ↗" data-es="Escuchar en SoundCloud ↗">Listen on SoundCloud ↗</a>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <h2 class="contact-heading">Let's work together</h2>
-    <p class="contact-sub">Open to commissions for film, games, trailers, and live experiences.</p>
+    <h2 class="contact-heading" data-en="Let's work together" data-es="Trabajemos juntos">Let's work together</h2>
+    <p class="contact-sub" data-en="Open to commissions for film, games, trailers, and live experiences." data-es="Disponible para composiciones de cine, videojuegos, trailers y experiencias en vivo.">Open to commissions for film, games, trailers, and live experiences.</p>
     <a href="mailto:nico.leonlope@gmail.com" class="contact-email">nico.leonlope@gmail.com</a>
   </section>
 
@@ -479,6 +537,25 @@
       <li><a href="https://soundcloud.com/nicoleonlo" target="_blank" rel="noopener">SoundCloud</a></li>
     </ul>
   </footer>
+
+  <script>
+    let currentLang = 'en';
+
+    function toggleLang() {
+      currentLang = currentLang === 'en' ? 'es' : 'en';
+      const toggle = document.querySelector('.lang-toggle');
+      toggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
+
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = el.getAttribute('data-' + currentLang);
+        if (text) el.textContent = text;
+      });
+
+      document.title = currentLang === 'es'
+        ? 'Nicolás León — Música que habla'
+        : 'Nicolás León — Score That Speaks';
+    }
+  </script>
 
 </body>
 </html>
