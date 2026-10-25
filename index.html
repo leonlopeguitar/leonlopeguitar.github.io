@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nicolás León — Score That Speaks</title>
+  <title>Nicolás León — Music for film, games, and live experience</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,17 +49,9 @@
       text-decoration: none;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
+    .nav-right { display: flex; align-items: center; gap: 2.5rem; }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 
     .nav-links a {
       font-size: 0.75rem;
@@ -85,10 +77,7 @@
       font-family: 'DM Sans', sans-serif;
     }
 
-    .lang-toggle:hover {
-      color: var(--amber);
-      border-color: var(--amber);
-    }
+    .lang-toggle:hover { color: var(--amber); border-color: var(--amber); }
 
     /* HERO */
     #hero {
@@ -127,7 +116,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       font-style: italic;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--cream-muted);
       margin-bottom: 3rem;
       letter-spacing: 0.04em;
@@ -148,11 +137,7 @@
 
     .hero-cta:hover { border-color: var(--amber); color: var(--amber); }
 
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-      min-height: 400px;
-    }
+    .hero-right { position: relative; overflow: hidden; min-height: 400px; }
 
     .hero-right img {
       width: 100%;
@@ -194,7 +179,6 @@
     }
 
     .about-text p:last-child { margin-bottom: 0; }
-
     .highlight { color: var(--amber); }
 
     /* CREDITS */
@@ -272,7 +256,7 @@
       line-height: 1.6;
     }
 
-    /* SCORES */
+    /* SCORES / PLAYER */
     #scores {
       background: var(--charcoal);
       padding: 7rem 4rem;
@@ -282,11 +266,86 @@
       align-items: start;
     }
 
-    .scores-content p {
+    .scores-intro {
       font-size: 1rem;
       color: var(--cream-muted);
       line-height: 1.8;
       margin-bottom: 2.5rem;
+    }
+
+    .player-wrap { display: flex; flex-direction: column; gap: 0; }
+
+    .track-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-bottom: 0.5px solid rgba(245, 240, 232, 0.08);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .track-item:first-child { border-top: 0.5px solid rgba(245, 240, 232, 0.08); }
+
+    .track-item:hover .track-name { color: var(--cream); }
+
+    .play-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(245, 240, 232, 0.25);
+      background: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.2s;
+    }
+
+    .play-btn:hover { border-color: var(--amber); }
+
+    .play-btn svg { fill: var(--cream); width: 12px; height: 12px; margin-left: 2px; }
+    .play-btn.playing svg { margin-left: 0; }
+
+    .track-info { flex: 1; min-width: 0; }
+
+    .track-name {
+      font-size: 0.9rem;
+      color: var(--cream-muted);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .track-name.active { color: var(--amber); }
+
+    .track-duration {
+      font-size: 0.7rem;
+      color: rgba(245, 240, 232, 0.3);
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    .track-progress {
+      flex: 1;
+      height: 1px;
+      background: rgba(245, 240, 232, 0.1);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .track-progress-fill {
+      height: 100%;
+      background: var(--amber);
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    .scores-footer {
+      margin-top: 2rem;
     }
 
     .scores-link {
@@ -323,8 +382,16 @@
     .contact-sub {
       font-size: 0.9rem;
       color: var(--cream-muted);
-      margin-bottom: 3rem;
+      margin-bottom: 0.75rem;
       line-height: 1.7;
+    }
+
+    .contact-available {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 2.5rem;
     }
 
     .contact-email {
@@ -351,17 +418,9 @@
       align-items: center;
     }
 
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--cream-muted);
-      letter-spacing: 0.08em;
-    }
+    .footer-copy { font-size: 0.75rem; color: var(--cream-muted); letter-spacing: 0.08em; }
 
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
 
     .footer-links a {
       font-size: 0.75rem;
@@ -379,29 +438,16 @@
       nav { padding: 1.25rem 1.5rem; }
       .nav-links { display: none; }
 
-      #hero {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        min-height: auto;
-      }
+      #hero { grid-template-columns: 1fr; grid-template-rows: auto auto; min-height: auto; }
 
-      .hero-right {
-        order: -1;
-        height: 70vw;
-        min-height: 280px;
-      }
+      .hero-right { order: -1; height: 70vw; min-height: 280px; }
 
       .hero-right::after {
         background: linear-gradient(to top, var(--charcoal) 0%, transparent 40%);
       }
 
-      .hero-right img {
-        object-position: center 35%;
-      }
-
-      .hero-left {
-        padding: 2.5rem 1.5rem 4rem;
-      }
+      .hero-right img { object-position: center 35%; }
+      .hero-left { padding: 2.5rem 1.5rem 4rem; }
 
       #about, #scores { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 1.5rem; }
       #credits { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 1.5rem; }
@@ -429,9 +475,9 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
-      <p class="hero-eyebrow" data-en="Screen Composer · Bogotá" data-es="Compositor de música para medios · Bogotá">Screen Composer · Bogotá</p>
+      <p class="hero-eyebrow" data-en="Media Composer · Bogotá" data-es="Compositor de música para medios · Bogotá">Media Composer · Bogotá</p>
       <h1 class="hero-name">Nicolás<br>León</h1>
-      <p class="hero-tagline" data-en="Score that speaks." data-es="Música que habla.">Score that speaks.</p>
+      <p class="hero-tagline" data-en="Music for film, games, and live experience." data-es="Música para cine, videojuegos y experiencia en vivo.">Music for film, games, and live experience.</p>
       <a href="#contact" class="hero-cta" data-en="Let's work together" data-es="Trabajemos juntos">Let's work together</a>
     </div>
     <div class="hero-right">
@@ -448,7 +494,7 @@
         I'm Nicolás León, a media composer based in Bogotá specializing in atmospheric and narrative-driven scores. My work spans animated short films, video games, trailers, and live exhibitions — always built around the idea that music should be felt before it's heard.
       </p>
       <p>
-        <span data-en="My compositions have been part of projects recognized at " data-es="Mis composiciones han formado parte de proyectos reconocidos en ">My compositions have been part of projects recognized at </span><span class="highlight">FICCI</span>, <span class="highlight">Santiago Horror Festival</span>, <span class="highlight">Bakunawa Fest</span>, <span class="highlight">Bogoshorts</span><span data-en=", and the " data-es=" y la ">, and the </span><span class="highlight">Cinemateca de Bogotá</span>.
+        <span data-en="My compositions have been part of projects recognized at " data-es="Mis composiciones han formado parte de proyectos reconocidos en ">My compositions have been part of projects recognized at </span><span class="highlight">FICCI</span>, <span class="highlight">Santiago Horror Festival</span>, <span class="highlight">Bakunawa Fest</span>, <span class="highlight">Bogoshorts</span>, <span class="highlight">Anibia</span><span data-en=", and the " data-es=" y la ">, and the </span><span class="highlight">Cinemateca de Bogotá</span>.
       </p>
     </div>
   </section>
@@ -478,8 +524,8 @@
           <a href="https://youtu.be/dIbMn_N_aVU?si=cAy7L5aJ8FESC8Dx" target="_blank" rel="noopener" class="credit-link" data-en="Watch trailer →" data-es="Ver trailer →">Watch trailer →</a>
         </div>
         <div>
-          <p class="credit-role" data-en="Trailer music composer" data-es="Compositor de música para medios">Trailer music composer</p>
-          <p class="credit-awards" data-en="Best Animated Short — Santiago Horror Festival&#10;Best Horror Film — Bakunawa Fest&#10;Best Sound Design — Bogoshorts" data-es="Mejor cortometraje animado — Santiago Horror Festival&#10;Mejor película de horror — Bakunawa Fest&#10;Mejor diseño de sonido — Bogoshorts">Best Animated Short — Santiago Horror Festival<br>Best Horror Film — Bakunawa Fest<br>Best Sound Design — Bogoshorts</p>
+          <p class="credit-role" data-en="Trailer music composer" data-es="Compositor de música para trailer">Trailer music composer</p>
+          <p class="credit-awards">Best Animated Short — Santiago Horror Festival<br>Best Horror Film — Bakunawa Fest<br>Best Sound Design — Bogoshorts</p>
         </div>
       </div>
 
@@ -491,7 +537,18 @@
         </div>
         <div>
           <p class="credit-role" data-en="Soundtrack composer · Co-producer" data-es="Compositor de soundtrack · Co-productor">Soundtrack composer · Co-producer</p>
-          <p class="credit-awards" data-en="Best Animated Film — BR Banshee Festival&#10;Best Horror Short — Scumdance&#10;WIP Puerto Lab Prize — FICCI" data-es="Mejor filme animado — BR Banshee Festival&#10;Mejor cortometraje de horror — Scumdance&#10;Premio WIP Puerto Lab — FICCI">Best Animated Film — BR Banshee Festival<br>Best Horror Short — Scumdance<br>WIP Puerto Lab Prize — FICCI</p>
+          <p class="credit-awards">Best Animated Film — BR Banshee Festival<br>Best Horror Short — Scumdance<br>WIP Puerto Lab Prize — FICCI</p>
+        </div>
+      </div>
+
+      <div class="credit-item">
+        <div>
+          <p class="credit-title" data-en="A Contratiempo" data-es="A Contratiempo">A Contratiempo</p>
+          <p class="credit-festival">Anibia · El Compositorio</p>
+        </div>
+        <div>
+          <p class="credit-role" data-en="Live composer — clarinet, 2 violins, cello, tambora, marimba, electric guitar" data-es="Compositor en vivo — clarinete, 2 violines, cello, tambora, marimba, guitarra eléctrica">Live composer — clarinet, 2 violins, cello, tambora, marimba, electric guitar</p>
+          <p class="credit-awards" data-en="Cineconcierto · Live re-score for animation" data-es="Cineconcierto · Re-score en vivo para animación">Cineconcierto · Live re-score for animation</p>
         </div>
       </div>
 
@@ -512,12 +569,68 @@
   <!-- SCORES -->
   <section id="scores">
     <p class="section-label" data-en="Scores" data-es="Música">Scores</p>
-    <div class="scores-content">
-      <p data-en="A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story."
-         data-es="Una selección de scores originales para cine, videojuegos y medios en vivo. Atmosféricos, narrativos y construidos para servir a la historia.">
-        A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story.
-      </p>
-      <a href="https://soundcloud.com/nicoleonlo" target="_blank" rel="noopener" class="scores-link" data-en="Listen on SoundCloud →" data-es="Escuchar en SoundCloud →">Listen on SoundCloud →</a>
+    <div>
+      <p class="scores-intro" data-en="A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story." data-es="Una selección de scores originales para cine, videojuegos y medios en vivo. Atmosféricos, narrativos y construidos para servir a la historia.">A selection of original scores for film, games, and live media. Atmospheric, narrative-driven, and built to serve the story.</p>
+
+      <div class="player-wrap" id="playerWrap">
+
+        <div class="track-item" onclick="playTrack(0)">
+          <button class="play-btn" id="btn-0" aria-label="Play Curar">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </button>
+          <div class="track-info">
+            <div class="track-name" id="name-0">Curar</div>
+            <div class="track-duration" id="dur-0">—</div>
+          </div>
+          <div class="track-progress" id="prog-0" onclick="seekTrack(event, 0)">
+            <div class="track-progress-fill" id="fill-0"></div>
+          </div>
+        </div>
+
+        <div class="track-item" onclick="playTrack(1)">
+          <button class="play-btn" id="btn-1" aria-label="Play Retrospección">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </button>
+          <div class="track-info">
+            <div class="track-name" id="name-1">Retrospección</div>
+            <div class="track-duration" id="dur-1">—</div>
+          </div>
+          <div class="track-progress" id="prog-1" onclick="seekTrack(event, 1)">
+            <div class="track-progress-fill" id="fill-1"></div>
+          </div>
+        </div>
+
+        <div class="track-item" onclick="playTrack(2)">
+          <button class="play-btn" id="btn-2" aria-label="Play Obco">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </button>
+          <div class="track-info">
+            <div class="track-name" id="name-2">Obco</div>
+            <div class="track-duration" id="dur-2">—</div>
+          </div>
+          <div class="track-progress" id="prog-2" onclick="seekTrack(event, 2)">
+            <div class="track-progress-fill" id="fill-2"></div>
+          </div>
+        </div>
+
+        <div class="track-item" onclick="playTrack(3)">
+          <button class="play-btn" id="btn-3" aria-label="Play Realización">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </button>
+          <div class="track-info">
+            <div class="track-name" id="name-3">Realización</div>
+            <div class="track-duration" id="dur-3">—</div>
+          </div>
+          <div class="track-progress" id="prog-3" onclick="seekTrack(event, 3)">
+            <div class="track-progress-fill" id="fill-3"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="scores-footer">
+        <a href="https://soundcloud.com/nicoleonlo" target="_blank" rel="noopener" class="scores-link" data-en="Full catalog on SoundCloud →" data-es="Catálogo completo en SoundCloud →">Full catalog on SoundCloud →</a>
+      </div>
     </div>
   </section>
 
@@ -525,6 +638,7 @@
   <section id="contact">
     <h2 class="contact-heading" data-en="Let's work together" data-es="Trabajemos juntos">Let's work together</h2>
     <p class="contact-sub" data-en="Open to commissions for film, games, trailers, and live experiences." data-es="Disponible para composiciones de cine, videojuegos, trailers y experiencias en vivo.">Open to commissions for film, games, trailers, and live experiences.</p>
+    <p class="contact-available" data-en="Currently open to: short film scores · game soundtracks · live experiences" data-es="Actualmente disponible para: cortometrajes · soundtracks para videojuegos · experiencias en vivo">Currently open to: short film scores · game soundtracks · live experiences</p>
     <a href="mailto:nico.leonlope@gmail.com" class="contact-email">nico.leonlope@gmail.com</a>
   </section>
 
@@ -539,21 +653,108 @@
   </footer>
 
   <script>
+    /* ── Language toggle ── */
     let currentLang = 'en';
 
     function toggleLang() {
       currentLang = currentLang === 'en' ? 'es' : 'en';
-      const toggle = document.querySelector('.lang-toggle');
-      toggle.textContent = currentLang === 'en' ? 'ES' : 'EN';
-
+      document.querySelector('.lang-toggle').textContent = currentLang === 'en' ? 'ES' : 'EN';
       document.querySelectorAll('[data-en]').forEach(el => {
         const text = el.getAttribute('data-' + currentLang);
         if (text) el.textContent = text;
       });
-
       document.title = currentLang === 'es'
-        ? 'Nicolás León — Música que habla'
-        : 'Nicolás León — Score That Speaks';
+        ? 'Nicolás León — Música para cine, videojuegos y experiencia en vivo'
+        : 'Nicolás León — Music for film, games, and live experience';
+    }
+
+    /* ── Audio player ── */
+    const tracks = [
+      { file: 'curar.mp3',                              name: 'Curar' },
+      { file: '1m2 v2 Lete N.wav',                      name: 'Retrospección' },
+      { file: 'Obco - Suspenso_drama- Nicolás León.mp3', name: 'Obco' },
+      { file: '1m1 V3.mp3',                             name: 'Realización' }
+    ];
+
+    let currentTrack = -1;
+    let audio = new Audio();
+    let rafId = null;
+
+    function fmtTime(s) {
+      if (!isFinite(s)) return '—';
+      const m = Math.floor(s / 60);
+      const ss = Math.floor(s % 60).toString().padStart(2, '0');
+      return m + ':' + ss;
+    }
+
+    function pauseIcon() {
+      return '<rect x="0" y="0" width="3.5" height="12"/><rect x="6.5" y="0" width="3.5" height="12"/>';
+    }
+
+    function playIcon() {
+      return '<polygon points="0,0 10,6 0,12"/>';
+    }
+
+    function resetBtn(i) {
+      const btn = document.getElementById('btn-' + i);
+      if (btn) btn.querySelector('svg').innerHTML = playIcon();
+      const name = document.getElementById('name-' + i);
+      if (name) name.classList.remove('active');
+      const fill = document.getElementById('fill-' + i);
+      if (fill) fill.style.width = '0%';
+    }
+
+    function updateProgress() {
+      if (currentTrack < 0 || !audio.duration) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      const fill = document.getElementById('fill-' + currentTrack);
+      if (fill) fill.style.width = pct + '%';
+      const dur = document.getElementById('dur-' + currentTrack);
+      if (dur) dur.textContent = fmtTime(audio.currentTime) + ' / ' + fmtTime(audio.duration);
+      rafId = requestAnimationFrame(updateProgress);
+    }
+
+    function playTrack(i) {
+      if (currentTrack === i) {
+        if (audio.paused) {
+          audio.play();
+          document.getElementById('btn-' + i).querySelector('svg').innerHTML = pauseIcon();
+          rafId = requestAnimationFrame(updateProgress);
+        } else {
+          audio.pause();
+          document.getElementById('btn-' + i).querySelector('svg').innerHTML = playIcon();
+          cancelAnimationFrame(rafId);
+        }
+        return;
+      }
+
+      if (currentTrack >= 0) {
+        audio.pause();
+        cancelAnimationFrame(rafId);
+        resetBtn(currentTrack);
+      }
+
+      currentTrack = i;
+      audio.src = tracks[i].file;
+      audio.play().catch(() => {});
+
+      document.getElementById('btn-' + i).querySelector('svg').innerHTML = pauseIcon();
+      document.getElementById('name-' + i).classList.add('active');
+      rafId = requestAnimationFrame(updateProgress);
+
+      audio.onended = function() {
+        resetBtn(i);
+        cancelAnimationFrame(rafId);
+        currentTrack = -1;
+      };
+    }
+
+    function seekTrack(e, i) {
+      e.stopPropagation();
+      if (currentTrack !== i || !audio.duration) return;
+      const rect = document.getElementById('prog-' + i).getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      audio.currentTime = pct * audio.duration;
     }
   </script>
 
