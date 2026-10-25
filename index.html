@@ -362,6 +362,33 @@
 
     .scores-link:hover { background: var(--amber); color: var(--charcoal); }
 
+    /* LOGO STRIP */
+    .logo-strip {
+      background: var(--charcoal);
+      border-top: 0.5px solid rgba(245, 240, 232, 0.08);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .logo-strip img {
+      height: 40px;
+      width: auto;
+      opacity: 0.45;
+      filter: brightness(0) invert(1);
+      transition: opacity 0.2s;
+    }
+
+    .logo-strip img:hover { opacity: 0.75; }
+
+    @media (max-width: 768px) {
+      .logo-strip { padding: 2.5rem 1.5rem; gap: 2.5rem; }
+      .logo-strip img { height: 28px; }
+    }
+
     /* CONTACT */
     #contact {
       background: var(--charcoal);
@@ -633,6 +660,13 @@
       </div>
     </div>
   </section>
+
+  <!-- LOGO STRIP -->
+  <div class="logo-strip">
+    <img src="logo-cinemateca.png" alt="Cinemateca de Bogotá" />
+    <img src="logo-anibia.png" alt="Anibia" />
+    <img src="logo-ficci.png" alt="FICCI" />
+  </div>
 
   <!-- CONTACT -->
   <section id="contact">
